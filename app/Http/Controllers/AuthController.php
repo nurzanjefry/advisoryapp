@@ -53,6 +53,7 @@ class AuthController extends Controller
      */
 
      public function login(Request $request) {
+        
         $request->validate([
             'email' => 'required|string|email'
         ]);
@@ -70,7 +71,10 @@ class AuthController extends Controller
 
         $tokenResult = $user->createToken('Personal Access Token');
         $token = $tokenResult->token;
-        $token->save();
+        //$token->save();
+
+        $user->token = $token;
+        $user->save();
 
         return response()->json([
             'access_token' => $tokenResult->accessToken,
@@ -85,7 +89,10 @@ class AuthController extends Controller
      */
 
      public function logout (Request $request){
+
+       // $user = $request->user();
         $request->user()->token()->revoke();
+     
 
         return response()->json([
             'message' => 'Successfuly logged out'
