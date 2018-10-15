@@ -24,6 +24,10 @@ class User extends Authenticatable
     ];
 
     public $timestamps = false;
+    public function getAuthPassword()
+    {
+        return $this->encrypted_password; // case sensitive
+    }
 
 
     /**

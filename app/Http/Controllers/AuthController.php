@@ -58,12 +58,13 @@ class AuthController extends Controller
         ]);
 
         // $credentials = request(['email', 'password']);
-        $credentials['email'] = Input::get($request['email']);
+        $credentials = Input::only('email');
         $credentials['password'] = Input::get($request['encrypted_password']);
-
+        
         if(!Auth::attempt($credentials)) {
-            return response()->json(['message' => 'Unauthorized'], 401);
+            return response()->json(['message' => $credentials], 401);
         }
+
 
         $user = $request->user();
 
