@@ -62,7 +62,7 @@ class AuthController extends Controller
         $credentials['password'] = Input::get($request['encrypted_password']);
         
         if(!Auth::attempt($credentials)) {
-            return response()->json(['message' => $credentials], 401);
+            return response()->json(['message' => "Unauthorize, please check email & password"], 401);
         }
 
 
