@@ -51,6 +51,8 @@ class ListingController extends Controller
     public function show(Listing $listing)
     {
         //
+        //$list = QueryBuilder::for(Listing::class)->allowedFields('user_id')->get($listing);
+        //return $listing + $list;
         return $listing;
     }
 

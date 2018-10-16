@@ -66,6 +66,7 @@ class AuthController extends Controller
         $credentials = Input::only('email');
         $credentials['password'] = Input::get($request['encrypted_password']);
         
+       // $user = QueryBuilder::for(User::class)->allowedFields('type')->get();
         
         
         
@@ -89,6 +90,7 @@ class AuthController extends Controller
         return response()->json([
             'access_token' => $tokenResult->accessToken,
             'token_type' => 'Bearer',
+            'test'=> $user
         ]);
      }
 
