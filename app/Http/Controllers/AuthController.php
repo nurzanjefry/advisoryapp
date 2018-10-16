@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
+use Spatie\QueryBuilder\QueryBuilder;
+
 use App\User;
 
 class AuthController extends Controller
@@ -54,6 +56,8 @@ class AuthController extends Controller
 
      public function login(Request $request) {
         
+      
+
         $request->validate([
             'email' => 'required|string|email'
         ]);
@@ -61,6 +65,9 @@ class AuthController extends Controller
         // $credentials = request(['email', 'password']);
         $credentials = Input::only('email');
         $credentials['password'] = Input::get($request['encrypted_password']);
+        
+        
+        
         
         if(!Auth::attempt($credentials)) {
             return response()->json(['message' => "Unauthorize, please check email & password"], 401);
@@ -70,15 +77,18 @@ class AuthController extends Controller
         $user = $request->user();
 
         $tokenResult = $user->createToken('Personal Access Token');
-        $token = $tokenResult->token;
+        $token = $tokenResult->accessToken;
         //$token->save();
 
-        $user->token = $token;
+        //$user->token = substr($token, 0, 32);
+        $user->token = substr($token, 0, 32);
+        
+
         $user->save();
 
         return response()->json([
             'access_token' => $tokenResult->accessToken,
-            'token_type' => 'Bearer'
+            'token_type' => 'Bearer',
         ]);
      }
 
@@ -106,6 +116,10 @@ class AuthController extends Controller
      */
     public function user(Request $request)
     {
+        // $request = QueryBuilder::for(User::class)
+        //         ->allowedIncludes('email')
+        //         ->get();
+
         return response()->json($request->user());
     }
 

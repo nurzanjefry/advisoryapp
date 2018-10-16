@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
+use Spatie\QueryBuilder\QueryBuilder;
 use App\Listing;
 
 class ListingController extends Controller
