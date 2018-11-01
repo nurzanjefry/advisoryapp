@@ -1,0 +1,31 @@
+Migration table created successfully.
+Migrating: 2014_10_12_000000_create_users_table
+Migrated:  2014_10_12_000000_create_users_table
+Migrating: 2014_10_12_100000_create_password_resets_table
+Migrated:  2014_10_12_100000_create_password_resets_table
+Migrating: 2016_06_01_000001_create_oauth_auth_codes_table
+Migrated:  2016_06_01_000001_create_oauth_auth_codes_table
+Migrating: 2016_06_01_000002_create_oauth_access_tokens_table
+Migrated:  2016_06_01_000002_create_oauth_access_tokens_table
+Migrating: 2016_06_01_000003_create_oauth_refresh_tokens_table
+Migrated:  2016_06_01_000003_create_oauth_refresh_tokens_table
+Migrating: 2016_06_01_000004_create_oauth_clients_table
+Migrated:  2016_06_01_000004_create_oauth_clients_table
+Migrating: 2016_06_01_000005_create_oauth_personal_access_clients_table
+Migrated:  2016_06_01_000005_create_oauth_personal_access_clients_table
+PS C:\Users\Nurzan\advisoryapp\advisorylisting> php artisan passport:install
+Encryption keys already exist. Use the --force option to overwrite them.
+Personal access client created successfully.
+Client ID: 1
+Client Secret: cOPfVh9FMfbEokUxuAbXsXOwc5jQb1wQE1qEQ5Ds
+Password grant client created successfully.
+Client ID: 2
+Client Secret: gaMuZvUA5dTbgu5nWe1kNsGceqC9hdcWWqlu2b3x
+PS C:\Users\Nurzan\advisoryapp\advisorylisting> php artisan passport:install --force
+Encryption keys generated successfully.
+Personal access client created successfully.
+Client ID: 3
+Client Secret: bMSkIIqjITKPZHku05FzXdAG6LypO8nhKNtIGPk6
+Password grant client created successfully.
+Client ID: 4
+Client Secret: bmX4sQ7wLQaKaIE1rK42PjVdTko2c53kamLn0FYR
